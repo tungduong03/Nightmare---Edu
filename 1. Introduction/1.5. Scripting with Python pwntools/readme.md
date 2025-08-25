@@ -39,7 +39,40 @@ Gắn GDB và đặt breakpoint ngay tại hàm main: `gdb.attach(target, gdbscr
 
 Gửi dữ liệu thô: `target.send(x)`
 
-Gửi dữ liệu + xuống dòng (\n): `target.sendline(x)`
+Gửi dữ liệu + xuống dòng (`\n`): `target.sendline(x)`
+
+📤 Nhận dữ liệu từ target
+
+Nhận 1 dòng: `print(target.recvline())`
+
+Nhận toàn bộ dữ liệu cho tới khi gặp chuỗi "out": `print(target.recvuntil("out"))`
+
+📦 Packing / Unpacking
+
+Trong ELF, dữ liệu lưu dạng little-endian (byte thấp trước).
+
+Packing:
+
+- Pack số nguyên thành QWORD (64-bit, x64): `p64(x)`
+
+- Pack số nguyên thành DWORD (32-bit, x86): `p32(x)`
+
+Unpacking:
+
+- Unpack QWORD (64-bit): `u64(x)`
+
+- Unpack DWORD (32-bit): `u32(x)`
+
+🤝 Tương tác thủ công
+
+Khi muốn gõ lệnh trực tiếp và nhận output: `target.interactive()`
+
+
+
+
+
+
+
 
 
 
